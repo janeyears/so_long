@@ -6,11 +6,11 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/20 17:20:43 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:31:38 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 static void	load_player_moves_textures(t_game *game)
 {
@@ -35,7 +35,7 @@ t_game	*initialize_game(char **grid)
 
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
-		error_msg("Memory allocation for a struct is failed.");
+		error_msg("Memory allocation for a struct has failed.");
 	game->grid = grid;
 	game->width = ft_strlen(grid[0]);
 	game->height = count_rows(grid);
@@ -74,7 +74,7 @@ t_img	*initialize_img(mlx_t *mlx)
 	
 	textures = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!textures)
-		error_msg("Memory allocation for a struct is failed.");
+		error_msg("Memory allocation for a struct has failed.");
 	textures = load_wall_texture(mlx, textures);
 	textures = load_land_texture(mlx, textures);
 	textures = load_gem_texture(mlx, textures);

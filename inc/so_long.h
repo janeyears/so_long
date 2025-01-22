@@ -6,15 +6,15 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/20 17:23:26 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:45:18 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../Libft/libft.h"
+# include "../mlx42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
 
 # define PIXELS 32
 

@@ -6,11 +6,11 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/20 15:36:48 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:53:21 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 void	error_msg(char *msg)
 {
@@ -23,7 +23,7 @@ void	check_end_game(t_game *game)
 {
 	if (game->collected == game->gems)
 	{
-		if (game->player_x = game->exit_x && game->player_y == game->exit_y)
+		if (game->player_x == game->exit_x && game->player_y == game->exit_y)
 		{
 			mlx_close_window(game->mlx);
 			ft_printf("Congrats! You have found all gems\n");

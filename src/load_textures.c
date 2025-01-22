@@ -6,11 +6,11 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:36:04 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/20 17:20:07 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/22 15:53:49 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/so_long.h"
+#include "../inc/so_long.h"
 
 t_img	*load_wall_texture(mlx_t *mlx, t_img *img)
 {

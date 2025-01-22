@@ -27,17 +27,17 @@ $(LIBFT):
 	@$(MAKE) -C $(LIBFT_PATH)
 
 $(MLX42):
-	@$(MAKE) -C ./MLX42
+	@$(MAKE) -C $(MLX_PATH)
 
 clean:
-	$(RM) $(OBJS_PATH)
+	$(RM) -r $(OBJS_PATH)
 	@$(MAKE) -C $(LIBFT_PATH) clean
-	@$(MAKE) -C $(MLX_PATH) clean
+	@$(MAKE) -s -C $(MLX_PATH) clean
 
 fclean: clean
 	$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
-	@$(MAKE) -C $(MLX_PATH) clean
+	@$(MAKE) -s -C $(MLX_PATH) clean
 	
 re: fclean all
 
