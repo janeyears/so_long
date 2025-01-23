@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 17:31:38 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:32:49 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_game	*initialize_map_data(char *map)
 	check_map_rectangle(map_arr);
 	data = initialize_game(map_arr);
 	check_walls(data);
-	flood_fill(data);
+	temp_map(data);
 	free(map_str);
 	return (data);
 }

@@ -6,13 +6,13 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:26:58 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 16:28:05 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/23 11:40:28 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-size_t	get_player_position(t_game *game, char c )
+size_t	get_player_position(t_game *game, char c)
 {
 	size_t	y;
 	size_t	x;
@@ -37,7 +37,7 @@ size_t	get_player_position(t_game *game, char c )
 	return (0);
 }
 
-size_t	get_exit_position(t_game *game, char c )
+size_t	get_exit_position(t_game *game, char c)
 {
 	size_t	y;
 	size_t	x;

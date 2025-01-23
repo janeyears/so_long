@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 15:45:18 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:02:37 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,23 @@ t_img	*load_player_texture(mlx_t *mlx, t_img *img);
 t_game	*initialize_game(char **grid);
 t_game	*initialize_map_data(char *map);
 t_img	*initialize_img(mlx_t *mlx);
+
+// Coordinates
+
+size_t	get_player_position(t_game *game, char c);
+size_t	get_exit_position(t_game *game, char c);
+
+// Map parsing, rendering and path checking
+
+size_t	count_rows(char **grid);
+size_t	count_gems(t_game *game);
+char	*read_map(char *map);
+void	image_select(t_game *data, size_t y, size_t x);
+void	fill_land(t_game *data);
+void	render_map(t_game *data);
+void	free_grid(char **grid, size_t height);
+int	check_path(t_game *temp, size_t y, size_t x);
+void	temp_map(t_game *game);
 
 // Utils
 
