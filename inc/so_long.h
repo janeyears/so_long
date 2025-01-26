@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/23 12:02:37 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:44:04 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,18 @@ void	render_map(t_game *data);
 void	free_grid(char **grid, size_t height);
 int	check_path(t_game *temp, size_t y, size_t x);
 void	temp_map(t_game *game);
+
+// Directions and moves
+
+void	load_player(t_game *game, char dir);
+void	select_move(t_game *game, char line, char dir);
+void	move_player(t_game *game, char line, char dir);
+void	move_hook(mlx_key_data_t keydata, void *data);
+void	remove_gem(t_game *game, int y, int x);
+t_game	*move_up(t_game *game);
+t_game	*move_down(t_game *game);
+t_game	*move_right(t_game *game);
+t_game	*move_left(t_game *game);
 
 // Utils
 

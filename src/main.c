@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/23 12:04:02 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/24 12:29:20 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main (int argc, char **argv)
 	game->img = textures;
 	fill_land(game);
 	render_map(game);
+	mlx_key_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	return (0);
