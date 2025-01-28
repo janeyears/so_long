@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 15:42:51 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:45:59 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ typedef struct s_game {
 	size_t			moves;
 	size_t			exit_x;
 	size_t			exit_y;
-	mlx_texture_t	*player_up;
-	mlx_texture_t	*player_down;
-	mlx_texture_t	*player_left;
-	mlx_texture_t	*player_right;
 	t_img			*img;
 	mlx_t			*mlx;
 }	t_game;
@@ -91,7 +87,6 @@ void	temp_map(t_game *game);
 
 void	select_move(t_game *game, char line, char dir);
 void	move_hook(mlx_key_data_t keydata, void *data);
-void	remove_gem(t_game *game, int y, int x);
 t_game	*move_up(t_game *game);
 t_game	*move_down(t_game *game);
 t_game	*move_right(t_game *game);
