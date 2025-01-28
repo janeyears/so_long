@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:36:04 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 15:53:49 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:54:31 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_img	*load_land_texture(mlx_t *mlx, t_img *img)
 t_img	*load_gem_texture(mlx_t *mlx, t_img *img)
 {
 	mlx_texture_t	*gem;
-	gem = mlx_load_png("./textures/land.png");
+	gem = mlx_load_png("./textures/gem.png");
 	if (!gem)
 		error_msg("Couldn't upload texture");
 	img->gem = mlx_texture_to_image(mlx, gem);

@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:34:33 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/23 11:39:00 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:52:13 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	image_select(t_game *data, size_t y, size_t x)
 			error_msg("image_to_window has failed");
 	if (data->grid[y][x] == 'C')
 		if (mlx_image_to_window(data->mlx, data->img->gem,
-				x * PIXELS + img_size / 2, y * PIXELS + img_size / 2) < 0)
+				x * PIXELS, y * PIXELS) < 0)
 			error_msg("image_to_window has failed");
 	if (data->grid[y][x] == 'P')
 		if (mlx_image_to_window(data->mlx, data->img->player,

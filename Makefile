@@ -6,21 +6,22 @@ SRCS_PATH = ./src
 OBJS_PATH = ./obj
 LIBFT_PATH = ./libft
 MLX_PATH = ./mlx42
-MLX_FLAGS = -lglfw(3) -framework Cocoa -framework OpenGL -framework IOKit
+MLX_FLAGS = -ldl -lglfw -pthread -lm
 
 MLX42 = $(MLX_PATH)/libmlx42.a
 LIBFT = $(LIBFT_PATH)/libft.a
-SRCS = .src/main.c \
-		.src/dirictions.c \
-		.src/get_coordinates.c \
-		.src/load_textures.c \
-		.src/map_checks1.c \
-		.src/map_checks2.c \
-		.src/moves.c \
-		.src/path_check.c \
-		.src/render_map.c \
-		.src/struct_init.c \
-		.src/utils.c \
+SRCS = $(SRCS_PATH)/main.c \
+		$(SRCS_PATH)/directions.c \
+		$(SRCS_PATH)/get_coordinates.c \
+		$(SRCS_PATH)/load_textures.c \
+		$(SRCS_PATH)/map_checks1.c \
+		$(SRCS_PATH)/map_checks2.c \
+		$(SRCS_PATH)/map_parsing.c \
+		$(SRCS_PATH)/moves.c \
+		$(SRCS_PATH)/path_check.c \
+		$(SRCS_PATH)/render_map.c \
+		$(SRCS_PATH)/structs_init.c \
+		$(SRCS_PATH)/utils.c \
 		 
 OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
 

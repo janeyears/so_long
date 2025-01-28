@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/24 12:44:04 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:42:51 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,7 @@ void	temp_map(t_game *game);
 
 // Directions and moves
 
-void	load_player(t_game *game, char dir);
 void	select_move(t_game *game, char line, char dir);
-void	move_player(t_game *game, char line, char dir);
 void	move_hook(mlx_key_data_t keydata, void *data);
 void	remove_gem(t_game *game, int y, int x);
 t_game	*move_up(t_game *game);

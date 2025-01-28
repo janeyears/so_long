@@ -6,25 +6,11 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:08:34 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/17 11:44:15 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:42:09 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strchr(const char *str, int search)
-{
-	while (*str != '\0')
-	{
-		if (*str == search)
-			return ((char *)str);
-		str++;
-	}
-	if (search == '\0')
-		return ((char *)str);
-	return (NULL);
-}
-
 
 void	ft_read_line(char **buffer, int fd)
 {
