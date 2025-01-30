@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:34:33 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 18:05:56 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:47:27 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	image_select(t_game *data, size_t y, size_t x)
 		if (mlx_image_to_window(data->mlx, data->img->wall,
 				x * PIXELS, y * PIXELS) < 0)
 			error_msg("image_to_window has failed");
+	if (data->grid[y][x] == 'E')
+		if (mlx_image_to_window(data->mlx, data->img->exit,
+				x * PIXELS, y * PIXELS) < 0)
+			error_msg("image_to_window has failed");
 	if (data->grid[y][x] == 'C')
 		if (mlx_image_to_window(data->mlx, data->img->gem,
 				x * PIXELS, y * PIXELS) < 0)
 			error_msg("image_to_window has failed");
 	if (data->grid[y][x] == 'P')
 		if (mlx_image_to_window(data->mlx, data->img->player,
-				x * PIXELS, y * PIXELS) < 0)
-			error_msg("image_to_window has failed");
-	if (data->grid[y][x] == 'E')
-		if (mlx_image_to_window(data->mlx, data->img->exit,
 				x * PIXELS, y * PIXELS) < 0)
 			error_msg("image_to_window has failed");
 }
@@ -74,4 +74,6 @@ void	render_map(t_game *data)
 		}
 		y++;
 	}
+	if (data->img->player->instances->z < data->img->exit->instances->z)
+		mlx_set_instance_depth(data->img->exit->instances, data->img->player->instances->z - 1);
 }

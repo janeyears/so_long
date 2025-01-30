@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:22:49 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 16:49:20 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:30:46 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,12 @@ char	*read_map(char *map)
 {
 	char	*line;
 	char	*joined_lines;
+	char	*temp;
 	int		fd;
 
 	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	joined_lines = ft_calloc(1, 1);
 	if (!joined_lines)
 		return (NULL);
@@ -62,12 +65,14 @@ char	*read_map(char *map)
 		line = get_next_line(fd);
 		if (line)
 		{
+			temp = joined_lines;
 			joined_lines = ft_strjoin(joined_lines, line);
+			free(temp);
 			free(line);
 		}
 		else
-			break ;
+			break;
 	}
-	close (fd);
+	close(fd);
 	return (joined_lines);
 }

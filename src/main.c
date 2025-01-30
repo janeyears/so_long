@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 16:29:51 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:25:09 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main (int argc, char **argv)
 	mlx_key_hook(game->mlx, move_hook, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
+	free(textures);
 	free(game);
 	return (0);
 	
