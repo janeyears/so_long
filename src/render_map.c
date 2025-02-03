@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:34:33 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/30 14:47:27 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/03 13:39:00 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 
 void	image_select(t_game *data, size_t y, size_t x)
 {
-	size_t	img_size;
-
-	img_size = 32;
 	if (data->grid[y][x] == '1')
 		if (mlx_image_to_window(data->mlx, data->img->wall,
 				x * PIXELS, y * PIXELS) < 0)

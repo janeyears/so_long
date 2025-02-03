@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:57:56 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 15:53:36 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:52:42 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ void	check_walls(t_game *game)
 	while (game->grid[i])
 	{
 		if (game->grid[i][0] != '1')
-			error_msg("The map is not surrounded by walls.");
+			error_free("The map is not surrounded by walls.", game);
 		if (game->grid[i][game->width -1] != '1')
-			error_msg("The map is not surrounded by walls.");
+			error_free("The map is not surrounded by walls.", game);
 		i++;
 	}
 	i = 0;
 	while (game->grid[0][i])
 	{
 		if (game->grid[0][i] != '1')
-			error_msg("The map is not surround by walls.");
+			error_free("The map is not surrounded by walls.", game);
 		if (game->grid[game->height -1][i] != '1')
-			error_msg("The map is not surrounded by walls.");
+			error_free("The map is not surrounded by walls.", game);
 		i++;
 	}
 }

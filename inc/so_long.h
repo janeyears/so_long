@@ -6,14 +6,14 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 16:45:59 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:53:21 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx42/include/MLX42/MLX42.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 
 # define PIXELS 32
@@ -96,5 +96,7 @@ t_game	*move_left(t_game *game);
 
 void	error_msg(char *msg);
 void	check_end_game(t_game *game);
+void	free_game(t_game *game);
+void	error_free(char *msg, t_game *game);
 
 #endif

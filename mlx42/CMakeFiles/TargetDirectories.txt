@@ -1,7 +1,0 @@
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/mlx42.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/edit_cache.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/rebuild_cache.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/list_install_components.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/install.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/install/local.dir
-/home/ekashirs/projects/Hive/so_long/mlx42/CMakeFiles/install/strip.dir

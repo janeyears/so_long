@@ -6,18 +6,11 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 17:18:37 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:53:09 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
-void	error_msg(char *msg)
-{
-	ft_putstr_fd("Error\n", 2);
-	ft_putendl_fd(msg, 2);
-	exit(1);
-}
 
 void check_end_game(t_game *game)
 {
@@ -29,4 +22,34 @@ void check_end_game(t_game *game)
             ft_printf("Congrats! You have found all gems\n");
         }
     }
+}
+
+void	free_game(t_game *game)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < game->height)
+	{
+		free(game->grid[i]);
+		i++;
+	}
+	free(game->grid);
+	free(game->img);
+	free(game);
+}
+
+void	error_msg(char *msg)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putendl_fd(msg, 2);
+	exit(1);
+}
+
+void error_free(char *msg, t_game *game)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putendl_fd(msg, 2);
+	free_game(game);
+	exit(1);
 }
