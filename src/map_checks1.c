@@ -6,16 +6,19 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:38:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 15:53:39 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:23:46 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	check_invalid_symbols(int i)
+void	check_invalid_symbols(int i, char *map)
 {
 	if(!(ft_strchr("PEC01X\n", i)))
+	{
+		free(map);
 		error_msg("Map contains invalid symbols");
+	}
 }
 
 void	check_map_content(char *map)
@@ -38,10 +41,13 @@ void	check_map_content(char *map)
 		if (map[i] == 'C')
 			gems++;
 		else
-			check_invalid_symbols(map[i]);
+			check_invalid_symbols(map[i], map);
 	}
 	if (player != 1|| exit != 1 || gems < 1)
+	{
+		free(map);
 		error_msg("Invalid map");
+	}
 }
 
 void	check_map_ber(char *file)
@@ -63,7 +69,10 @@ void	check_map_rectangle(char **grid)
 	while (grid[i])
 	{
 		if (ft_strlen(grid[i]) != len)
+		{
+			free_grid(grid, i);
 			error_msg("Map is not a rectangle");
+		}
 		i++;
 	}
 }

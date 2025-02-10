@@ -1,56 +1,58 @@
 NAME = so_long
-CC = cc -Wall -Werror -Wextra -I./inc/
-RM = rm -f
-SRCS_PATH = ./src
-OBJS_PATH = ./obj
-LIBFT_PATH = ./libft
-MLX_PATH = ./MLX42
+CC = cc 
+CFLAGS = -Wall -Wextra -Werror
+MLX42FLAGS = -ldl -lglfw -pthread -lm 
+LIBFT = ./libft/libft.a
+LIBMLX42 = ./MLX42/build/libmlx42.a
+INCLUDES = -I./include -I./MLX42/include
+MLX42_DIR = ./MLX42
+SRC_DIR = src/
+OBJ_DIR = obj/
 
-MLX42 = $(MLX_PATH)/build/libmlx42.a -ldl -lglfw -pthread -lm
-LIBFT = $(LIBFT_PATH)/libft.a
-SRCS = $(SRCS_PATH)/main.c \
-		$(SRCS_PATH)/directions.c \
-		$(SRCS_PATH)/get_coordinates.c \
-		$(SRCS_PATH)/load_textures.c \
-		$(SRCS_PATH)/map_checks1.c \
-		$(SRCS_PATH)/map_checks2.c \
-		$(SRCS_PATH)/map_parsing.c \
-		$(SRCS_PATH)/moves.c \
-		$(SRCS_PATH)/path_check.c \
-		$(SRCS_PATH)/render_map.c \
-		$(SRCS_PATH)/structs_init.c \
-		$(SRCS_PATH)/utils.c \
-		 
-OBJS = $(SRCS:$(SRCS_PATH)/%.c=$(OBJS_PATH)/%.o)
+SRCS = $(SRC_DIR)/main.c \
+		$(SRC_DIR))/directions.c \
+		$(SRC_DIR))/get_coordinates.c \
+		$(SRC_DIR)/load_textures.c \
+		$(SRC_DIR)/map_checks1.c \
+		$(SRC_DIR))/map_checks2.c \
+		$(SRC_DIR)/map_parsing.c \
+		$(SRC_DIR)/moves.c \
+		$(SRC_DIR)/path_check.c \
+		$(SRC_DIR)/render_map.c \
+		$(SRC_DIR)/structs_init.c \
+		$(SRC_DIR)/utils.c \
 
-all: libmlx $(NAME)
+SRC	= $(addprefix $(SRC_DIR), $(SRCS))
+OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 
-libmlx: $(MLX42)
+all:	check_MLX42_dir	$(NAME) 
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX42)
-	$(CC) $(OBJS) $(MLX42) $(LIBFT) -o $(NAME)
+$(NAME): $(LIBFT) libmlx $(LIBMLX42) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIBMLX42) $(MLX42FLAGS)
 
-$(OBJS_PATH):
-	mkdir -p $(OBJS_PATH)
+$(LIBFT):
+	@$(MAKE) -C ./libft
 
-$(OBJS_PATH)/%.o: $(SRCS_PATH)/%.c | $(OBJS_PATH)
-	$(CC) -c $< -o $@
+libmlx:
+	@cd $(MLX42_DIR) && cmake -B build && cmake --build build -j4
 
-$(LIBFT): 
-	$(MAKE) -C $(LIBFT_PATH)
+check_MLX42_dir:
+	@if ! [ -d "$(MLX42_DIR)" ]; then \
+	git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
+	fi
 
-$(MLX42): 
-	cd $(MLX_PATH) && cmake -B build && cmake --build build -j4
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
 
-clean:
-	$(RM) -r $(OBJS_PATH)
-	@$(MAKE) -C $(LIBFT_PATH) clean
-	@rm -rf $(MLX_PATH)/build
+clean: 
+	@$(MAKE) clean -C ./libft
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
-	@$(MAKE) -C $(LIBFT_PATH) fclean
-	
-re: fclean all
+	@$(MAKE) fclean -C ./libft
+	@rm -f $(NAME)
 
-.PHONY: all clean fclean re libmlx
+re:	fclean all
+
+.PHONY: all clean fclean re

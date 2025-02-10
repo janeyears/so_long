@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/03 15:53:21 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:23:23 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_game {
 
 // Map checking
 
-void	check_invalid_symbols(int i);
+void	check_invalid_symbols(int i, char *map);
 void	check_map_content(char *map);
 void	check_map_ber(char *file);
 void	check_map_rectangle(char **grid);

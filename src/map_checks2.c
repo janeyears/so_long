@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:57:56 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/03 15:52:42 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/04 12:26:01 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	check_empty(char *map)
 {
 	if (!map[0])
+	{
+		free(map);
 		error_msg("Map is empty.");
+	}
 }
 
 void	check_empty_lines(char *map)
@@ -26,7 +29,10 @@ void	check_empty_lines(char *map)
 	while (map[i])
 	{
 		if (map[0] == '\n' || (map[i] == '\n' && (map[i + 1]) == '\n'))
+		{
+			free(map);
 			error_msg("There are empty lines on the map.");
+		}
 		i++;
 	}
 }
