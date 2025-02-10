@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/05 11:37:38 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:31:24 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main (int argc, char **argv)
 	game->mlx  =mlx_init(game->width  * PIXELS, game->height * PIXELS, "so_long", true);
 	if (!game->mlx)
 		return (EXIT_FAILURE);
-	textures = initialize_img(game->mlx);
+	textures = initialize_img(game->mlx, game);
 	game->img = textures;
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	fill_land(game);

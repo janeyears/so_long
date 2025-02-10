@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/04 12:28:31 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:31:05 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ void error_free(char *msg, t_game *game)
 	ft_putstr_fd("Error\n", 2);
 	ft_putendl_fd(msg, 2);
 	free_grid(game-> grid, game->height);
+	free(game);
+	mlx_terminate(game->mlx);
 	exit(1);
 }

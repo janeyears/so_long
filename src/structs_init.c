@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/04 12:19:42 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:32:50 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ t_game	*initialize_map_data(char *map)
 	return (data);
 }
 
-t_img	*initialize_img(mlx_t *mlx)
+t_img	*initialize_img(mlx_t *mlx, t_game *game)
 {
 	t_img	*textures;
 	
 	textures = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!textures)
 		error_msg("Memory allocation for a struct has failed.");
-	textures = load_wall_texture(mlx, textures);
-	textures = load_land_texture(mlx, textures);
-	textures = load_gem_texture(mlx, textures);
-	textures = load_exit_texture(mlx, textures);
-	textures = load_player_texture(mlx, textures);
+	textures = load_wall_texture(mlx, textures, game);
+	textures = load_land_texture(mlx, textures, game);
+	textures = load_gem_texture(mlx, textures, game);
+	textures = load_exit_texture(mlx, textures, game);
+	textures = load_player_texture(mlx, textures, game);
 	return(textures);
 }
