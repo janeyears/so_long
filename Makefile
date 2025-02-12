@@ -21,6 +21,7 @@ SRCS = $(SRC_DIR)/main.c \
 		$(SRC_DIR)/render_map.c \
 		$(SRC_DIR)/structs_init.c \
 		$(SRC_DIR)/utils.c \
+		$(SRC_DIR)/error_handling.c \
 
 SRC	= $(addprefix $(SRC_DIR), $(SRCS))
 OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
