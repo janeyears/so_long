@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:00:50 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 16:31:34 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:58:22 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_grid(char **grid, size_t height)
 	free(grid);
 }
 
-int	check_path(t_game *temp, size_t y, size_t x)
+static int	check_path(t_game *temp, size_t y, size_t x)
 {
 	if (temp->grid[y][x] == '1')
 		return (0);

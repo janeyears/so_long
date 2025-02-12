@@ -6,14 +6,14 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:34:33 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/05 11:37:16 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:57:24 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
 
-void	image_select(t_game *data, size_t y, size_t x)
+static void	image_select(t_game *data, size_t y, size_t x)
 {
 	if (data->grid[y][x] == '1')
 		if (mlx_image_to_window(data->mlx, data->img->wall,

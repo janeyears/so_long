@@ -6,13 +6,13 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:34:44 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/30 13:39:39 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:59:42 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	remove_gem(t_game *game, int y, int x)
+static void	remove_gem(t_game *game, int y, int x)
 {
 	size_t i;
 	

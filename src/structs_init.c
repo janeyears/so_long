@@ -6,13 +6,13 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 16:41:57 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:56:35 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-t_game	*initialize_game(char **grid)
+static t_game	*initialize_game(char **grid)
 {
 	t_game	*game;
 
