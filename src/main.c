@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/10 18:31:24 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:26:22 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 int main (int argc, char **argv)
 {
 	t_game	*game;
-	t_img	*textures;
 
 	if (argc != 2)
 		error_msg("Invalid number of arguments.");
 	check_map_ber(argv[1]);
 	game = initialize_map_data(argv[1]);
-	game->mlx  =mlx_init(game->width  * PIXELS, game->height * PIXELS, "so_long", true);
+	game->mlx = mlx_init(game->width  * PIXELS, game->height * PIXELS, "so_long", true);
 	if (!game->mlx)
 		return (EXIT_FAILURE);
-	textures = initialize_img(game->mlx, game);
-	game->img = textures;
+	initialize_img(game->mlx, game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	fill_land(game);
 	render_map(game);

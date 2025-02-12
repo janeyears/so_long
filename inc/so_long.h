@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/10 18:33:56 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:04:45 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void	check_walls(t_game *game);
 
 // Texture loadings
 
-t_img	*load_wall_texture(mlx_t *mlx, t_img *img, t_game *game);
-t_img	*load_land_texture(mlx_t *mlx, t_img *img, t_game *game);
-t_img	*load_gem_texture(mlx_t *mlx, t_img *img, t_game *game);
-t_img	*load_exit_texture(mlx_t *mlx, t_img *img, t_game *game);
-t_img	*load_player_texture(mlx_t *mlx, t_img *img, t_game *game);
+void	load_wall_texture(mlx_t *mlx, t_game *game);
+void	load_land_texture(mlx_t *mlx, t_game *game);
+void	load_gem_texture(mlx_t *mlx, t_game *game);
+void	load_exit_texture(mlx_t *mlx, t_game *game);
+void	load_player_texture(mlx_t *mlx, t_game *game);
 
 // Struct initializations
 
 t_game	*initialize_game(char **grid);
 t_game	*initialize_map_data(char *map);
-t_img	*initialize_img(mlx_t *mlx, t_game *game);
+void	initialize_img(mlx_t *mlx, t_game *game);
 
 // Coordinates
 

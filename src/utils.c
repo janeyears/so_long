@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/10 18:31:05 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:26:44 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@ void	free_game(t_game *game)
 		free(game->grid[i]);
 		i++;
 	}
-	free(game->grid);
-	free(game->img);
-	free(game);
+	if (game->grid)
+		free(game->grid);
+	if (game->img)
+		free(game->img);
+	if (game)
+		free(game);
 }
 
 void	error_msg(char *msg)
@@ -50,8 +53,9 @@ void error_free(char *msg, t_game *game)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_putendl_fd(msg, 2);
-	free_grid(game-> grid, game->height);
-	free(game);
+	free_game(game);
 	mlx_terminate(game->mlx);
+	if (game)
+		free(game);
 	exit(1);
 }
