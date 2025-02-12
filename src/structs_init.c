@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 14:03:10 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:41:57 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_game	*initialize_game(char **grid)
 
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
+	{
 		error_msg("Memory allocation for a struct has failed.");
+		return(NULL);
+	}
 	game->grid = grid;
 	game->width = ft_strlen(grid[0]);
 	game->height = count_rows(grid);
@@ -38,15 +41,25 @@ t_game	*initialize_map_data(char *map)
 	t_game	*data;
 
 	map_str = read_map(map);
+	if(!map_str)
+		error_msg_exit("Reading map has failed");
 	check_empty(map_str);
 	check_empty_lines(map_str);
 	check_map_content(map_str);
 	map_arr = ft_split(map_str, '\n');
+	if(!map_arr)
+	{
+		free(map_str);
+		free_map_arr(map_arr);
+		error_msg_exit("Reading map has failed");
+	}
+	free(map_str);
 	check_map_rectangle(map_arr);
 	data = initialize_game(map_arr);
+	if(!data)
+		free_map_arr(map_arr);
 	check_walls(data);
 	temp_map(data);
-	free(map_str);
 	return (data);
 }
 
@@ -54,7 +67,7 @@ void	initialize_img(mlx_t *mlx, t_game *game)
 {
 	game->img = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!game->img)
-		error_msg("Memory allocation for a struct has failed.");
+		error_free("Memory allocation for a struct has failed.", game);
 	load_wall_texture(mlx, game);
 	load_land_texture(mlx, game);
 	load_gem_texture(mlx, game);

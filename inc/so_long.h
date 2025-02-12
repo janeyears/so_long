@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 14:04:45 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:20:53 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	image_select(t_game *data, size_t y, size_t x);
 void	fill_land(t_game *data);
 void	render_map(t_game *data);
 void	free_grid(char **grid, size_t height);
-int	check_path(t_game *temp, size_t y, size_t x);
+int		check_path(t_game *temp, size_t y, size_t x);
 void	temp_map(t_game *game);
 
 // Directions and moves
@@ -98,5 +98,9 @@ void	error_free(char *msg, t_game *game);
 void	check_end_game(t_game *game);
 void	free_game(t_game *game);
 void	error_msg(char *msg);
+void	error_msg_exit(char *msg);
+void	free_map_arr(char **map_arr);
+void	free_map_arr_exit(char **map_arr);
+
 
 #endif

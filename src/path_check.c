@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:00:50 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/22 17:32:41 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:31:34 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,9 @@ void	temp_map(t_game *game)
 	}
 	check_path(&temp, temp.player_y, temp.player_x);
 	if (!(temp.exit_x == 1 && temp.gems == 0))
-		error_msg("No valid path");
+	{
+		free_grid(temp.grid, temp.height);
+		error_free("No valid path", game);
+	}
 	free_grid(temp.grid, temp.height);
 }

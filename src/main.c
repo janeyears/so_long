@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 14:26:22 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:52:27 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int main (int argc, char **argv)
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	free_game(game);
+	free(game);
 	return (0);
 	
 }

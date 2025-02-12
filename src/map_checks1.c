@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:38:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/04 12:23:46 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:09:55 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	check_map_content(char *map)
 	if (player != 1|| exit != 1 || gems < 1)
 	{
 		free(map);
-		error_msg("Invalid map");
+		error_msg_exit("Invalid map");
 	}
 }
 
