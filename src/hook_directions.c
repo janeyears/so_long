@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   directions.c                                       :+:      :+:    :+:   */
+/*   hook_directions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:23:11 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 15:42:42 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:34:59 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
-
 
 void	select_move(t_game *game, char line, char dir)
 {
@@ -30,7 +29,6 @@ void	select_move(t_game *game, char line, char dir)
 			move_left(game);
 	}
 }
-
 
 void	move_hook(mlx_key_data_t keydata, void *data)
 {

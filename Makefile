@@ -10,15 +10,14 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRCS = $(SRC_DIR)/main.c \
-		$(SRC_DIR))/directions.c \
-		$(SRC_DIR))/get_coordinates.c \
+		$(SRC_DIR)/hook_directions.c \
 		$(SRC_DIR)/load_textures.c \
 		$(SRC_DIR)/map_checks1.c \
-		$(SRC_DIR))/map_checks2.c \
+		$(SRC_DIR)/map_checks2.c \
 		$(SRC_DIR)/map_parsing.c \
-		$(SRC_DIR)/moves.c \
-		$(SRC_DIR)/path_check.c \
-		$(SRC_DIR)/render_map.c \
+		$(SRC_DIR)/move_handling.c \
+		$(SRC_DIR)/check_map_path.c \
+		$(SRC_DIR)/render_map_image.c \
 		$(SRC_DIR)/structs_init.c \
 		$(SRC_DIR)/utils.c \
 		$(SRC_DIR)/error_handling.c \

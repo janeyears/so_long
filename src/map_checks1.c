@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:38:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 16:09:55 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:58:41 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,41 @@
 
 void	check_invalid_symbols(int i, char *map)
 {
-	if(!(ft_strchr("PEC01X\n", i)))
+	if (!(ft_strchr("01CEP\n", i)))
 	{
 		free(map);
-		error_msg("Map contains invalid symbols");
+		error_msg_exit("Map contains invalid symbols");
 	}
 }
 
-void	check_map_content(char *map)
+void	check_map_ber(char *file)
+{
+	size_t	len;
+
+	len = ft_strlen(file);
+	if (len < 4 || ft_strncmp(file + len - 4, ".ber", 4))
+		error_msg_exit("Map is not a .ber file");
+}
+
+void	check_map_rectangle(char **map)
+{
+	size_t	i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(map[i]);
+	while (map[i])
+	{
+		if (ft_strlen(map[i]) != len)
+		{
+			free_grid(map, i);
+			error_msg_exit("Map is not a rectangle");
+		}
+		i++;
+	}
+}
+
+void	validate_map_elements(char *map)
 {
 	int	player;
 	int	exit;
@@ -43,36 +70,9 @@ void	check_map_content(char *map)
 		else
 			check_invalid_symbols(map[i], map);
 	}
-	if (player != 1|| exit != 1 || gems < 1)
+	if (player != 1 || exit != 1 || gems < 1)
 	{
 		free(map);
 		error_msg_exit("Invalid map");
-	}
-}
-
-void	check_map_ber(char *file)
-{
-	size_t	len;
-	
-	len = ft_strlen(file);
-	if (len < 4 || ft_strncmp(file + len - 4, ".ber", 4))
-		error_msg("Map is not a .ber file");
-}
-
-void	check_map_rectangle(char **grid)
-{
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = ft_strlen(grid[i]);
-	while (grid[i])
-	{
-		if (ft_strlen(grid[i]) != len)
-		{
-			free_grid(grid, i);
-			error_msg("Map is not a rectangle");
-		}
-		i++;
 	}
 }

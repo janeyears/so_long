@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 17:59:13 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:42:27 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_img {
 }	t_img;
 
 typedef struct s_game {
-	char			**grid;
+	char			**map;
 	size_t			width;
 	size_t			height;
 	size_t			gems;
@@ -44,12 +44,11 @@ typedef struct s_game {
 
 // Map checking
 
+void	validate_map_elements(char *map);
 void	check_invalid_symbols(int i, char *map);
-void	check_map_content(char *map);
 void	check_map_ber(char *file);
 void	check_map_rectangle(char **grid);
-void	check_empty(char *map);
-void	check_empty_lines(char *map);
+void	check_empty_file_lines(char *map);
 void	check_walls(t_game *game);
 
 // Texture loadings

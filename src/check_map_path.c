@@ -1,49 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_check.c                                       :+:      :+:    :+:   */
+/*   check_map_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 17:00:50 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 17:58:22 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:34:52 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	free_grid(char **grid, size_t height)
+static int	path_search(t_game *temp, size_t y, size_t x)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < height)
-	{
-		free(grid[i]);
-		i++;
-	}
-	free(grid);
-}
-
-static int	check_path(t_game *temp, size_t y, size_t x)
-{
-	if (temp->grid[y][x] == '1')
+	if (temp->map[y][x] == '1')
 		return (0);
-	if (temp->grid[y][x] == 'C')
+	if (temp->map[y][x] == 'C')
 		temp->gems--;
-	if (temp->grid[y][x] == 'E')
+	if (temp->map[y][x] == 'E')
 	{
 		temp->exit_x = 1;
 		return (0);
 	}
-	temp->grid[y][x] = '1';
-	if (check_path(temp, y + 1, x))
+	temp->map[y][x] = '1';
+	if (path_search(temp, y + 1, x))
 		return (1);
-	if (check_path(temp, y - 1, x))
+	if (path_search(temp, y - 1, x))
 		return (1);
-	if (check_path(temp, y, x + 1))
+	if (path_search(temp, y, x + 1))
 		return (1);
-	if (check_path(temp, y, x - 1))
+	if (path_search(temp, y, x - 1))
 		return (1);
 	return (0);
 }
@@ -59,20 +46,20 @@ void	temp_map(t_game *game)
 	temp.player_x = game->player_x;
 	temp.player_y = game->player_y;
 	temp.exit_x = 0;
-	temp.grid = (char **)malloc(temp.height * sizeof(char *));
-	if (!temp.grid)
-		error_msg("Memory allocation for a struct has failed.");
+	temp.map = malloc(temp.height * sizeof(char *));
+	if (!temp.map)
+		error_free("Memory allocation for a struct has failed.", game);
 	i = 0;
 	while (i < temp.height)
 	{
-		temp.grid[i] = ft_strdup(game->grid[i]);
+		temp.map[i] = ft_strdup(game->map[i]);
 		i++;
 	}
-	check_path(&temp, temp.player_y, temp.player_x);
+	path_search(&temp, temp.player_y, temp.player_x);
 	if (!(temp.exit_x == 1 && temp.gems == 0))
 	{
-		free_grid(temp.grid, temp.height);
+		free_grid(temp.map, temp.height);
 		error_free("No valid path", game);
 	}
-	free_grid(temp.grid, temp.height);
+	free_grid(temp.map, temp.height);
 }

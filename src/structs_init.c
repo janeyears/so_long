@@ -6,32 +6,33 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 17:56:35 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:50:51 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static t_game	*initialize_game(char **grid)
+static t_game	*initialize_game(char **map)
 {
 	t_game	*game;
 
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 	{
-		error_msg("Memory allocation for a struct has failed.");
-		return(NULL);
+		free_map_arr(map);
+		error_msg_exit("Memory allocation for a struct has failed.");
+		return (NULL);
 	}
-	game->grid = grid;
-	game->width = ft_strlen(grid[0]);
-	game->height = count_rows(grid);
+	game->map = map;
+	game->width = ft_strlen(map[0]);
+	game->height = count_rows(map);
 	game->gems = count_gems(game);
 	game->moves = 0;
 	game->player_x = get_player_position(game, 'x');
 	game->player_y = get_player_position(game, 'y');
 	game->exit_x = get_exit_position(game, 'x');
 	game->exit_y = get_exit_position(game, 'y');
-	return(game);
+	return (game);
 }
 
 t_game	*initialize_map_data(char *map)
@@ -41,23 +42,20 @@ t_game	*initialize_map_data(char *map)
 	t_game	*data;
 
 	map_str = read_map(map);
-	if(!map_str)
+	if (!map_str)
 		error_msg_exit("Reading map has failed");
-	check_empty(map_str);
-	check_empty_lines(map_str);
-	check_map_content(map_str);
+	check_empty_file_lines(map_str);
+	validate_map_elements(map_str);
 	map_arr = ft_split(map_str, '\n');
-	if(!map_arr)
+	if (!map_arr)
 	{
 		free(map_str);
 		free_map_arr(map_arr);
-		error_msg_exit("Reading map has failed");
+		error_msg_exit("Creating 2D map array has failed");
 	}
 	free(map_str);
 	check_map_rectangle(map_arr);
 	data = initialize_game(map_arr);
-	if(!data)
-		free_map_arr(map_arr);
 	check_walls(data);
 	temp_map(data);
 	return (data);

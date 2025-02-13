@@ -6,13 +6,13 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 14:52:27 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:48:27 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	*game;
 
@@ -20,7 +20,8 @@ int main (int argc, char **argv)
 		error_msg("Invalid number of arguments.");
 	check_map_ber(argv[1]);
 	game = initialize_map_data(argv[1]);
-	game->mlx = mlx_init(game->width  * PIXELS, game->height * PIXELS, "so_long", true);
+	game->mlx = mlx_init(game->width * PIXELS,
+			game->height * PIXELS, "so_long", true);
 	if (!game->mlx)
 		return (EXIT_FAILURE);
 	initialize_img(game->mlx, game);
@@ -33,5 +34,4 @@ int main (int argc, char **argv)
 	free_game(game);
 	free(game);
 	return (0);
-	
 }

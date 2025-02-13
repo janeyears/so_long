@@ -6,19 +6,19 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 16:22:49 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/12 15:11:49 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:20:13 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 #include <fcntl.h>
 
-size_t	count_rows(char **grid)
+size_t	count_rows(char **map)
 {
 	size_t	y;
 
 	y = 0;
-	while (grid[y])
+	while (map[y])
 		y++;
 	return (y);
 }
@@ -36,7 +36,7 @@ size_t	count_gems(t_game *game)
 		x = 0;
 		while (x < game->width)
 		{
-			if (game->grid[y][x] == 'C')
+			if (game->map[y][x] == 'C')
 			{
 				gems++;
 			}
