@@ -5,49 +5,49 @@ MLX42FLAGS = -ldl -lglfw -pthread -lm
 LIBFT = ./libft/libft.a
 LIBMLX42 = ./MLX42/build/libmlx42.a
 INCLUDES = -I./inc -I./MLX42/include
-MLX42_DIR = ./MLX42
-SRC_DIR = src/
-OBJ_DIR = obj/
+MLX42_PATH = ./MLX42
+SRC_PATH = src/
+OBJ_PATH = obj/
 
-SRCS = $(SRC_DIR)/main.c \
-		$(SRC_DIR)/hook_directions.c \
-		$(SRC_DIR)/load_textures.c \
-		$(SRC_DIR)/map_checks1.c \
-		$(SRC_DIR)/map_checks2.c \
-		$(SRC_DIR)/map_parsing.c \
-		$(SRC_DIR)/move_handling.c \
-		$(SRC_DIR)/check_map_path.c \
-		$(SRC_DIR)/render_map_image.c \
-		$(SRC_DIR)/structs_init.c \
-		$(SRC_DIR)/utils.c \
-		$(SRC_DIR)/error_handling.c \
+SRCS = $(SRC_PATH)/main.c \
+		$(SRC_PATH)/hook_directions.c \
+		$(SRC_PATH)/load_textures.c \
+		$(SRC_PATH)/map_checks1.c \
+		$(SRC_PATH)/map_checks2.c \
+		$(SRC_PATH)/map_parsing.c \
+		$(SRC_PATH)/move_handling.c \
+		$(SRC_PATH)/check_map_path.c \
+		$(SRC_PATH)/render_map_image.c \
+		$(SRC_PATH)/structs_init.c \
+		$(SRC_PATH)/utils.c \
+		$(SRC_PATH)/error_handling.c \
 
-SRC	= $(addprefix $(SRC_DIR), $(SRCS))
-OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
+SRC	= $(addprefix $(SRC_PATH), $(SRCS))
+OBJ = $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 
 all:	$(NAME) 
 
-$(NAME): check_MLX42_dir $(OBJ) $(LIBFT) $(LIBMLX42) 
+$(NAME): check_MLX42_PATH $(OBJ) $(LIBFT) $(LIBMLX42) 
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIBMLX42) $(MLX42FLAGS)
 
 $(LIBFT):
 	@$(MAKE) -C ./libft
 
 $(LIBMLX42):
-	@cmake $(MLX42_DIR) -B $(MLX42_DIR)/build && make -C $(MLX42_DIR)/build -j4
+	@cmake $(MLX42_PATH) -B $(MLX42_PATH)/build && make -C $(MLX42_PATH)/build -j4
 
-check_MLX42_dir:
-	@if ! [ -d "$(MLX42_DIR)" ]; then \
-	git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_DIR); \
+check_MLX42_PATH:
+	@if ! [ -d "$(MLX42_PATH)" ]; then \
+	git clone https://github.com/codam-coding-college/MLX42.git $(MLX42_PATH); \
 	fi
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(OBJ_DIR)
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@mkdir -p $(OBJ_PATH)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
 
 clean: 
 	@$(MAKE) clean -C ./libft
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_PATH)
 
 fclean: clean
 	@$(MAKE) fclean -C ./libft
