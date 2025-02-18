@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/18 13:01:37 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:46:05 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	free_map_arr(char **map_arr)
 	int	i;
 
 	i = 0;
+	if (map_arr[i] == NULL)
+		return ;
 	while (map_arr[i] != NULL)
 	{
 		free(map_arr[i]);

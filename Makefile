@@ -1,7 +1,7 @@
 NAME = so_long
 CC = cc 
 CFLAGS = -Wall -Wextra -Werror
-MLX42FLAGS = -ldl -lglfw -pthread -lm 
+MLX42FLAGS = -ldl -lglfw -pthread -lm
 LIBFT = ./libft/libft.a
 LIBMLX42 = ./MLX42/build/libmlx42.a
 INCLUDES = -I./inc -I./MLX42/include -I.libft/

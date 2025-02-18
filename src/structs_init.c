@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/14 15:21:53 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:55:57 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ t_game	*initialize_map(char *map)
 	if (!map_arr)
 	{
 		free(map_str);
-		free_map_arr(map_arr);
 		error_msg_exit("Creating 2D map array has failed");
 	}
 	free(map_str);

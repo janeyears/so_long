@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:36:04 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 13:47:13 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:49:27 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	load_wall_texture(mlx_t *mlx, t_game *game)
 		error_free("Couldn't upload texture", game);
 	game->img->wall = mlx_texture_to_image(mlx, wall);
 	if (!game->img->wall)
+	{
+		mlx_delete_texture(wall);
 		error_free("Couldn't convert texture to image", game);
+	}
 	mlx_delete_texture(wall);
 }
 
@@ -34,7 +37,10 @@ void	load_land_texture(mlx_t *mlx, t_game *game)
 		error_free("Couldn't upload texture", game);
 	game->img->land = mlx_texture_to_image(mlx, land);
 	if (!game->img->land)
+	{
+		mlx_delete_texture(land);
 		error_free("Couldn't convert texture to image", game);
+	}
 	mlx_delete_texture(land);
 }
 
@@ -47,7 +53,10 @@ void	load_gem_texture(mlx_t *mlx, t_game *game)
 		error_free("Couldn't upload texture", game);
 	game->img->gem = mlx_texture_to_image(mlx, gem);
 	if (!game->img->gem)
+	{
+		mlx_delete_texture(gem);
 		error_free("Couldn't convert texture to image", game);
+	}
 	mlx_delete_texture(gem);
 }
 
@@ -55,12 +64,16 @@ void	load_exit_texture(mlx_t *mlx, t_game *game)
 {
 	mlx_texture_t	*exit;
 
+	(void)mlx;
 	exit = mlx_load_png("./textures/exit.png");
 	if (!exit)
 		error_free("Couldn't upload texture", game);
 	game->img->exit = mlx_texture_to_image(mlx, exit);
 	if (!game->img->exit)
+	{
+		mlx_delete_texture(exit);
 		error_free("Couldn't convert texture to image", game);
+	}
 	mlx_delete_texture(exit);
 }
 
@@ -73,6 +86,9 @@ void	load_player_texture(mlx_t *mlx, t_game *game)
 		error_free("Couldn't upload texture", game);
 	game->img->player = mlx_texture_to_image(mlx, player);
 	if (!game->img->player)
+	{
+		mlx_delete_texture(player);
 		error_free("Couldn't convert texture to image", game);
+	}
 	mlx_delete_texture(player);
 }

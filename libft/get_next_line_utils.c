@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:08:34 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/01/28 14:42:09 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:51:18 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ void	ft_read_line(char **buffer, int fd)
 		}
 		tmp_buff[bytes] = '\0';
 		tmp_line = ft_strjoin(*buffer, tmp_buff);
+		if(tmp_line == NULL)
+		{
+			free(tmp_buff);
+			free(*buffer);
+			*buffer = NULL;
+			return ;
+		}
 		free(*buffer);
 		*buffer = tmp_line;
 		if (ft_strchr(tmp_buff, '\n'))
@@ -47,7 +54,12 @@ void	ft_extract_line(char **buffer, char **line, size_t len)
 
 	*line = ft_calloc(len + 2, sizeof(char));
 	if (!(*line))
+	{
+		free(*buffer);
+		*buffer = NULL;
 		return ;
+	}
+		
 	i = 0;
 	while (i < len)
 	{
@@ -60,6 +72,12 @@ void	ft_extract_line(char **buffer, char **line, size_t len)
 	if ((*buffer)[i])
 	{
 		remaining_data = ft_strjoin(*buffer + i, "");
+		if(remaining_data == NULL)
+		{
+			free(*buffer);
+			free(line);
+			return ;
+		}
 		free(*buffer);
 		*buffer = remaining_data;
 		return ;
