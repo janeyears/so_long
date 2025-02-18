@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:02:31 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 14:50:51 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:21:53 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ static t_game	*initialize_game(char **map)
 {
 	t_game	*game;
 
-	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	game = ft_calloc(1, sizeof(t_game));
 	if (!game)
 	{
 		free_map_arr(map);
 		error_msg_exit("Memory allocation for a struct has failed.");
-		return (NULL);
 	}
 	game->map = map;
 	game->width = ft_strlen(map[0]);
@@ -35,11 +34,11 @@ static t_game	*initialize_game(char **map)
 	return (game);
 }
 
-t_game	*initialize_map_data(char *map)
+t_game	*initialize_map(char *map)
 {
+	t_game	*data;
 	char	*map_str;
 	char	**map_arr;
-	t_game	*data;
 
 	map_str = read_map(map);
 	if (!map_str)
@@ -63,7 +62,7 @@ t_game	*initialize_map_data(char *map)
 
 void	initialize_img(mlx_t *mlx, t_game *game)
 {
-	game->img = (t_img *)ft_calloc(1, sizeof(t_img));
+	game->img = ft_calloc(1, sizeof(t_img));
 	if (!game->img)
 		error_free("Memory allocation for a struct has failed.", game);
 	load_wall_texture(mlx, game);

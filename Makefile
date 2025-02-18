@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLX42FLAGS = -ldl -lglfw -pthread -lm 
 LIBFT = ./libft/libft.a
 LIBMLX42 = ./MLX42/build/libmlx42.a
-INCLUDES = -I./inc -I./MLX42/include
+INCLUDES = -I./inc -I./MLX42/include -I.libft/
 MLX42_PATH = ./MLX42
 SRC_PATH = src/
 OBJ_PATH = obj/
@@ -12,8 +12,8 @@ OBJ_PATH = obj/
 SRCS = $(SRC_PATH)/main.c \
 		$(SRC_PATH)/hook_directions.c \
 		$(SRC_PATH)/load_textures.c \
-		$(SRC_PATH)/map_checks1.c \
-		$(SRC_PATH)/map_checks2.c \
+		$(SRC_PATH)/map_checks.c \
+		$(SRC_PATH)/wall_check.c \
 		$(SRC_PATH)/map_parsing.c \
 		$(SRC_PATH)/move_handling.c \
 		$(SRC_PATH)/check_map_path.c \
@@ -46,13 +46,14 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $^
 
 clean: 
-	@$(MAKE) clean -C ./libft
+	@$(MAKE) -C ./libft clean 
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@$(MAKE) fclean -C ./libft
+	@$(MAKE) -C ./libft fclean
+	@rm -rf ./MLX42/build
 	@rm -f $(NAME)
 
 re:	fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re check_MLX42_PATH

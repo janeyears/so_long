@@ -6,24 +6,29 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 12:23:05 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 13:48:27 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:44:48 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	main(int argc, char **argv)
+int	main(int ac, char **av)
 {
 	t_game	*game;
 
-	if (argc != 2)
+	if (ac != 2)
+	{
 		error_msg("Invalid number of arguments.");
-	check_map_ber(argv[1]);
-	game = initialize_map_data(argv[1]);
-	game->mlx = mlx_init(game->width * PIXELS,
-			game->height * PIXELS, "so_long", true);
+		exit(1);
+	}
+	check_map_ber(av[1]);
+	game = initialize_map(av[1]);
+	if (game->width * TILE_SIZE > 3840 || game->height * TILE_SIZE > 2160)
+		error_free("Game width or height is too big", game);
+	game->mlx = mlx_init(game->width * TILE_SIZE,
+			game->height * TILE_SIZE, "so_long", true);
 	if (!game->mlx)
-		return (EXIT_FAILURE);
+		error_free("Couldn't create game with mlx library", game);
 	initialize_img(game->mlx, game);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	fill_land(game);

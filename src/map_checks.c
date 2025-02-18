@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_checks1.c                                      :+:      :+:    :+:   */
+/*   map_checks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:38:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 13:58:41 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:17:49 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_map_rectangle(char **map)
 	{
 		if (ft_strlen(map[i]) != len)
 		{
-			free_grid(map, i);
+			free_map_arr(map);
 			error_msg_exit("Map is not a rectangle");
 		}
 		i++;
@@ -74,5 +74,26 @@ void	validate_map_elements(char *map)
 	{
 		free(map);
 		error_msg_exit("Invalid map");
+	}
+}
+
+void	check_empty_file_lines(char *map)
+{
+	size_t	i;
+
+	if (!map[0])
+	{
+		free(map);
+		error_msg_exit("Map is empty.");
+	}
+	i = 0;
+	while (map[i])
+	{
+		if (map[0] == '\n' || (map[i] == '\n' && (map[i + 1]) == '\n'))
+		{
+			free(map);
+			error_msg_exit("There are empty lines on the map.");
+		}
+		i++;
 	}
 }

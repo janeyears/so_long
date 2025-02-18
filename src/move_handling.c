@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 12:34:44 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 13:54:21 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:06:47 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	remove_gem(t_game *game, int y, int x)
 	i = 0;
 	while (i < game->gems)
 	{
-		if (game->img->gem->instances[i].x == (int32_t)x * PIXELS
-			&& game->img->gem->instances[i].y == (int32_t)y * PIXELS)
+		if (game->img->gem->instances[i].x == (int32_t)x * TILE_SIZE
+			&& game->img->gem->instances[i].y == (int32_t)y * TILE_SIZE)
 		{
 			game->img->gem->instances[i].enabled = false;
 			break ;
@@ -29,7 +29,7 @@ static void	remove_gem(t_game *game, int y, int x)
 	}
 }
 
-t_game	*move_up(t_game *game)
+t_game	*moving_up(t_game *game)
 {
 	if (game->map[game->player_y - 1][game->player_x] != '1')
 	{
@@ -40,7 +40,7 @@ t_game	*move_up(t_game *game)
 			game->collected += 1;
 		}
 		game->player_y -= 1;
-		game->img->player->instances[0].y -= 1 * PIXELS;
+		game->img->player->instances[0].y -= 1 * TILE_SIZE;
 		game->moves += 1;
 		ft_printf("%d\n", game->moves);
 	}
@@ -48,7 +48,7 @@ t_game	*move_up(t_game *game)
 	return (game);
 }
 
-t_game	*move_down(t_game *game)
+t_game	*moving_down(t_game *game)
 {
 	if (game->map[game->player_y + 1][game->player_x] != '1')
 	{
@@ -59,7 +59,7 @@ t_game	*move_down(t_game *game)
 			game->collected += 1;
 		}
 		game->player_y += 1;
-		game->img->player->instances[0].y += 1 * PIXELS;
+		game->img->player->instances[0].y += 1 * TILE_SIZE;
 		game->moves += 1;
 		ft_printf("%d\n", game->moves);
 	}
@@ -67,7 +67,7 @@ t_game	*move_down(t_game *game)
 	return (game);
 }
 
-t_game	*move_right(t_game *game)
+t_game	*moving_right(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x + 1] != '1')
 	{
@@ -78,7 +78,7 @@ t_game	*move_right(t_game *game)
 			game->collected += 1;
 		}
 		game->player_x += 1;
-		game->img->player->instances[0].x += 1 * PIXELS;
+		game->img->player->instances[0].x += 1 * TILE_SIZE;
 		game->moves += 1;
 		ft_printf("%d\n", game->moves);
 	}
@@ -86,7 +86,7 @@ t_game	*move_right(t_game *game)
 	return (game);
 }
 
-t_game	*move_left(t_game *game)
+t_game	*moving_left(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x - 1] != '1')
 	{
@@ -97,7 +97,7 @@ t_game	*move_left(t_game *game)
 			game->collected += 1;
 		}
 		game->player_x -= 1;
-		game->img->player->instances[0].x -= 1 * PIXELS;
+		game->img->player->instances[0].x -= 1 * TILE_SIZE;
 		game->moves += 1;
 		ft_printf("%d\n", game->moves);
 	}

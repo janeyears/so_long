@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:20:17 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 14:09:53 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/18 13:01:37 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void	free_grid(char **map, size_t height)
 	i = 0;
 	while (i < height)
 	{
-		free(map[i]);
+		if (map[i])
+			free(map[i]);
 		i++;
 	}
 	free(map);

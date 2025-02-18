@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 13:48:30 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/13 13:42:27 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:21:24 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,19 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 
-# define PIXELS 32
+# define TILE_SIZE 32
 
-typedef struct s_img {
+typedef struct s_img
+{
 	mlx_image_t			*wall;
 	mlx_image_t			*land;
 	mlx_image_t			*gem;
 	mlx_image_t			*player;
 	mlx_image_t			*exit;
-	mlx_image_t			*moves_nbr;
 }	t_img;
 
-typedef struct s_game {
+typedef struct s_game
+{
 	char			**map;
 	size_t			width;
 	size_t			height;
@@ -61,7 +62,7 @@ void	load_player_texture(mlx_t *mlx, t_game *game);
 
 // Struct initializations
 
-t_game	*initialize_map_data(char *map);
+t_game	*initialize_map(char *map);
 void	initialize_img(mlx_t *mlx, t_game *game);
 
 // Coordinates
@@ -81,12 +82,11 @@ void	temp_map(t_game *game);
 
 // Directions and moves
 
-void	select_move(t_game *game, char line, char dir);
 void	move_hook(mlx_key_data_t keydata, void *data);
-t_game	*move_up(t_game *game);
-t_game	*move_down(t_game *game);
-t_game	*move_right(t_game *game);
-t_game	*move_left(t_game *game);
+t_game	*moving_up(t_game *game);
+t_game	*moving_down(t_game *game);
+t_game	*moving_right(t_game *game);
+t_game	*moving_left(t_game *game);
 
 // Utils
 
