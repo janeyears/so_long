@@ -6,13 +6,13 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 14:08:34 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/20 12:36:15 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:57:28 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_append_to_buffer(char **buffer, char *tmp_buff)
+static int	ft_append_to_buffer(char **buffer, char *tmp_buff)
 {
 	char	*tmp_line;
 
@@ -22,10 +22,11 @@ static void	ft_append_to_buffer(char **buffer, char *tmp_buff)
 		free(tmp_buff);
 		free(*buffer);
 		*buffer = NULL;
-		return ;
+		return (1);
 	}
 	free(*buffer);
 	*buffer = tmp_line;
+	return (0);
 }
 
 void	ft_read_line(char **buffer, int fd)
@@ -46,7 +47,8 @@ void	ft_read_line(char **buffer, int fd)
 			return ;
 		}
 		tmp_buff[bytes] = '\0';
-		ft_append_to_buffer(buffer, tmp_buff);
+		if (ft_append_to_buffer(buffer, tmp_buff))
+			return ;
 		if (ft_strchr(tmp_buff, '\n'))
 			break ;
 	}

@@ -6,7 +6,7 @@
 /*   By: ekashirs <ekashirs@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:38:13 by ekashirs          #+#    #+#             */
-/*   Updated: 2025/02/14 15:17:49 by ekashirs         ###   ########.fr       */
+/*   Updated: 2025/02/21 14:57:56 by ekashirs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	validate_map_elements(char *map)
 		else
 			check_invalid_symbols(map[i], map);
 	}
-	if (player != 1 || exit != 1 || gems < 1)
+	if (gems < 1 || player != 1 || exit != 1)
 	{
 		free(map);
 		error_msg_exit("Invalid map");
